@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  sustainhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sustainhub-webapp
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      # Persist database data
+      - ./data:/app/data
+      # Mount the database file (create it first if it doesn't exist)
+      - ./backend/fridge.db:/app/backend/fridge.db
+    restart: unless-stopped
+    networks:
+      - sustainhub-network
+
+networks:
+  sustainhub-network:
+    driver: bridge

@@ -1,0 +1,75 @@
+.cover-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFE9B3 100%);
+}
+
+.cover-content {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.cover-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #8B6914;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+}
+
+.cover-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cover-button {
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 1px;
+}
+
+.cover-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cover-button:active {
+  transform: translateY(0);
+}
+
+.inventory-button {
+  background-color: #FFD54F;
+  color: #8B6914;
+}
+
+.meal-ideas-button {
+  background-color: #F4A460;
+  color: #FFF;
+}
+
+.scan-receipt-button {
+  background-color: #E8956E;
+  color: #FFF;
+}
+
+@media (max-width: 480px) {
+  .cover-title {
+    font-size: 1.5rem;
+  }
+
+  .cover-button {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}

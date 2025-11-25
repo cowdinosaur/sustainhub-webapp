@@ -1,0 +1,127 @@
+.inventory-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #FFE9B3 0%, #FFD54F 100%);
+  padding: 2rem;
+  padding-bottom: 6rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #8B6914;
+  letter-spacing: 2px;
+}
+
+.inventory-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.inventory-table {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-table thead {
+  background-color: rgba(139, 105, 20, 0.2);
+}
+
+.inventory-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  color: #8B6914;
+  border-bottom: 2px solid #8B6914;
+}
+
+.inventory-table td {
+  padding: 1rem;
+  color: #333;
+  border-bottom: 1px solid rgba(139, 105, 20, 0.2);
+}
+
+.inventory-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.inventory-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.expired {
+  color: #D32F2F;
+  font-weight: bold;
+}
+
+.empty-message {
+  text-align: center;
+  color: #8B6914;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.navigation-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 213, 79, 0.95);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: #8B6914;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #6B5014;
+  transform: scale(1.1);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .inventory-table th,
+  .inventory-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-button {
+    width: 50px;
+    height: 50px;
+  }
+}
