@@ -35,10 +35,75 @@ function Inventory() {
     return `${diffDays} days`;
   };
 
+  const addRandomIngredient = async () => {
+    const randomIngredients = [
+      'tomato', 'carrot', 'onion', 'garlic', 'potato', 'broccoli',
+      'lettuce', 'cucumber', 'bell pepper', 'mushroom', 'spinach',
+      'apple', 'banana', 'orange', 'grapes', 'strawberry',
+      'chicken breast', 'ground beef', 'salmon', 'eggs', 'milk',
+      'cheese', 'butter', 'yogurt', 'bread', 'rice', 'pasta'
+    ];
+
+    const categories = ['vegetable', 'fruit', 'protein', 'dairy', 'grain'];
+    const units = ['units', 'kg', 'g', 'lbs', 'pieces'];
+
+    const randomName = randomIngredients[Math.floor(Math.random() * randomIngredients.length)];
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    const randomQuantity = Math.floor(Math.random() * 10) + 1;
+    const randomUnit = units[Math.floor(Math.random() * units.length)];
+
+    // Random expiry date between 1 and 14 days from now
+    const daysToAdd = Math.floor(Math.random() * 14) + 1;
+    const expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + daysToAdd);
+    const formattedExpiry = expiryDate.toISOString().split('T')[0];
+
+    try {
+      await axios.post('http://localhost:3001/api/ingredients', {
+        name: randomName,
+        category: randomCategory,
+        quantity: randomQuantity,
+        unit: randomUnit,
+        expiry_date: formattedExpiry
+      });
+      fetchIngredients(); // Refresh the list
+    } catch (error) {
+      console.error('Error adding random ingredient:', error);
+      alert('Failed to add random ingredient');
+    }
+  };
+
+  const deleteRandomIngredient = async () => {
+    if (ingredients.length === 0) {
+      alert('No ingredients to delete!');
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * ingredients.length);
+    const randomIngredient = ingredients[randomIndex];
+
+    try {
+      await axios.delete(`http://localhost:3001/api/ingredients/${randomIngredient.id}`);
+      fetchIngredients(); // Refresh the list
+    } catch (error) {
+      console.error('Error deleting random ingredient:', error);
+      alert('Failed to delete random ingredient');
+    }
+  };
+
   return (
     <div className="inventory-page">
       <div className="page-header">
         <h1 className="page-title">INVENTORY</h1>
+      </div>
+
+      <div className="testing-controls">
+        <button className="test-button add-button" onClick={addRandomIngredient}>
+          Add Random Ingredient
+        </button>
+        <button className="test-button delete-button" onClick={deleteRandomIngredient}>
+          Delete Random Ingredient
+        </button>
       </div>
 
       <div className="inventory-content">
